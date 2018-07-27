@@ -5,7 +5,7 @@ import android.view.View
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
 
-class MyController : BaseController<MyControlleViewHolder, MyControllerView, MyControllerPresenter>() {
+class MyController : BaseController<MyControlleViewHolder, MyControllerView, MyControllerModel, MyControllerPresenter>() {
 
     override fun getViewLayoutId(): Int {
         return R.layout.my_controller;
@@ -19,8 +19,12 @@ class MyController : BaseController<MyControlleViewHolder, MyControllerView, MyC
         return MyControllerViewImpl(viewHolder, this);
     }
 
-    override fun createPresenter(view: MyControllerView): MyControllerPresenter {
-        return MyControllerPresenterImpl(view);
+    override fun createModel(): MyControllerModel {
+        return MyControllerModelImpl(this);
+    }
+
+    override fun createPresenter(view: MyControllerView, model: MyControllerModel): MyControllerPresenter {
+        return MyControllerPresenterImpl(view, model);
     }
 
 }

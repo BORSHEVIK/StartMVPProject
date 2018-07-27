@@ -4,20 +4,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
-import com.example.aliaksandrmirashnichenka.myconductormvp.R
 
-open abstract class BaseController<H : ViewHolder, V : BaseView, P : BasePresenter>: Controller(), PresenterProvider<P> {
+open abstract class BaseController<H : ViewHolder, V : BaseView, M : BaseModel, P : BasePresenter>: Controller(), PresenterProvider<P> {
 
     private var viewHolder: H? = null;
-    private var viewImpl: V? = null;
+    private var view: V? = null;
     private var presenter: P? = null;
+    private var model: M? = null;
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         val view: View = inflater.inflate(getViewLayoutId(), container, false);
 
         this.viewHolder = createViewHolder(view);
-        this.viewImpl = createView(this.viewHolder!!);
-        this.presenter = createPresenter(this.viewImpl!!);
+        this.view = createView(this.viewHolder!!);
+        this.model = createModel();
+        this.presenter = createPresenter(this.view!!, this.model!!);
 
         return view;
     }
@@ -25,13 +26,14 @@ open abstract class BaseController<H : ViewHolder, V : BaseView, P : BasePresent
     override fun onDestroyView(view: View) {
         super.onDestroyView(view);
         this.viewHolder = null;
-        this.viewImpl = null;
+        this.view = null;
         this.presenter = null;
     }
 
     open abstract fun createViewHolder(view: View): H;
     open abstract fun createView(viewHolder: H): V;
-    open abstract fun createPresenter(view: V): P;
+    open abstract fun createPresenter(view: V, model: M): P;
+    open abstract fun createModel(): M;
     open abstract fun getViewLayoutId(): Int;
 
     override fun getPresenter(): P {

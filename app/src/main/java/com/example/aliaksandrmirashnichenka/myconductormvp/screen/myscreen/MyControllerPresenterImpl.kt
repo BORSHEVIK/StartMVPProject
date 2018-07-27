@@ -3,7 +3,7 @@ package com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BasePresenterImpl
 import java.util.*
 
-class MyControllerPresenterImpl(view: MyControllerView) : BasePresenterImpl<MyControllerView>(view), MyControllerPresenter {
+class MyControllerPresenterImpl(view: MyControllerView, model: MyControllerModel) : BasePresenterImpl<MyControllerView, MyControllerModel>(view, model), MyControllerPresenter {
 
     override fun updateButtonClick() {
         view.updateMeessage("Message form presenter and randome int value = " + (0 .. 1000000).random());

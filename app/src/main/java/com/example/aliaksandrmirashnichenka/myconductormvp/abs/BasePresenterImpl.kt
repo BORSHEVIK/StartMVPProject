@@ -1,11 +1,13 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs
 
-abstract open class BasePresenterImpl<V : BaseView> : BasePresenter{
+abstract open class BasePresenterImpl<V : BaseView, M : BaseModel> : BasePresenter{
 
     internal val view: V;
+    internal val model: M;
 
-    constructor(view: V) {
+    constructor(view: V, model: M) {
         this.view = view;
+        this.model = model;
     }
 
     override fun onDestroy() {
