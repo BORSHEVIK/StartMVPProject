@@ -5,9 +5,16 @@ import android.view.View
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.DataHolder
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.model.MyControllerModel
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.model.MyControllerModelImpl
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.presenter.MyControllerDataHolder
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.presenter.MyControllerPresenter
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.presenter.MyControllerPresenterImpl
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControlleViewHolder
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControllerView
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControllerViewImpl
 
-class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyControllerView, MyControllerModel, MyController.LocalDataHolder, MyControllerPresenter>(args) {
+class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyControllerView, MyControllerModel, MyControllerDataHolder, MyControllerPresenter>(args) {
 
     override fun getViewLayoutId(): Int {
         return R.layout.my_controller;
@@ -17,8 +24,8 @@ class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyCont
         return MyControlleViewHolder(view);
     }
 
-    override fun createDataHolder(bundle: MutableMap<String, Any>): LocalDataHolder {
-        return LocalDataHolder(bundle);
+    override fun createDataHolder(bundle: MutableMap<String, Any>): MyControllerDataHolder {
+        return MyControllerDataHolder(bundle);
     }
 
     override fun createView(viewHolder: MyControlleViewHolder): MyControllerView {
@@ -29,26 +36,8 @@ class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyCont
         return MyControllerModelImpl(this);
     }
 
-    override fun createPresenter(view: MyControllerView, model: MyControllerModel, dataHolder: LocalDataHolder): MyControllerPresenter {
+    override fun createPresenter(view: MyControllerView, model: MyControllerModel, dataHolder: MyControllerDataHolder): MyControllerPresenter {
         return MyControllerPresenterImpl(view, model, dataHolder);
-    }
-
-    inner class LocalDataHolder: DataHolder {
-
-        private val BUNDLE_VALUE = "BUNDLE_VALUE";
-
-        public var value: Int = 30;
-
-        constructor(bundle: MutableMap<String, Any>): super(bundle) {
-            if (bundle.containsKey(BUNDLE_VALUE)) {
-                this.value = bundle.get(BUNDLE_VALUE) as Int;
-            }
-        }
-
-        override fun save() {
-            bundle.put(BUNDLE_VALUE, value);
-        }
-
     }
 
 }

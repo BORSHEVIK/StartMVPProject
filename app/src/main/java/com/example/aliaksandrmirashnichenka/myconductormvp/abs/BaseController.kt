@@ -5,6 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenter
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.ViewHolder
 import java.io.Serializable
 
 open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: DataHolder, P: BasePresenter>(args: Bundle?) : Controller(args), PresenterProvider<P> {

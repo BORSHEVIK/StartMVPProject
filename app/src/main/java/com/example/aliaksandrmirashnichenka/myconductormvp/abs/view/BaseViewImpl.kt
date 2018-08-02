@@ -1,4 +1,7 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.abs
+package com.example.aliaksandrmirashnichenka.myconductormvp.abs.view
+
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PresenterProvider
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenter
 
 open class BaseViewImpl<V : ViewHolder, P : BasePresenter> : BaseView {
 

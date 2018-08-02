@@ -1,6 +1,9 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.abs
+package com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter
 
-abstract open class BasePresenterImpl<V: BaseView, M: BaseModel, D: DataHolder> : BasePresenter{
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
+
+abstract open class BasePresenterImpl<V: BaseView, M: BaseModel, D: DataHolder> : BasePresenter {
 
     internal val view: V;
     internal val model: M;

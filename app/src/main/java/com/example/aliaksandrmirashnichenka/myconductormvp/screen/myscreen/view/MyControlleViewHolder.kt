@@ -1,10 +1,10 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen
+package com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view
 
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.ViewHolder
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.ViewHolder
 
 
 class MyControlleViewHolder : ViewHolder {

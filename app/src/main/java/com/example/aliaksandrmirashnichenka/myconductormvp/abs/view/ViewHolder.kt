@@ -1,4 +1,4 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.abs
+package com.example.aliaksandrmirashnichenka.myconductormvp.abs.view
 
 import android.view.View
 
