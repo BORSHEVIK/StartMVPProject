@@ -1,11 +1,13 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen
 
+import android.os.Bundle
 import android.view.View
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.DataHolder
 
-class MyController : BaseController<MyControlleViewHolder, MyControllerView, MyControllerModel, MyControllerPresenter>() {
+class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyControllerView, MyControllerModel, MyController.LocalDataHolder, MyControllerPresenter>(args) {
 
     override fun getViewLayoutId(): Int {
         return R.layout.my_controller;
@@ -13,6 +15,10 @@ class MyController : BaseController<MyControlleViewHolder, MyControllerView, MyC
 
     override fun createViewHolder(view: View): MyControlleViewHolder {
         return MyControlleViewHolder(view);
+    }
+
+    override fun createDataHolder(bundle: MutableMap<String, Any>): LocalDataHolder {
+        return LocalDataHolder(bundle);
     }
 
     override fun createView(viewHolder: MyControlleViewHolder): MyControllerView {
@@ -23,8 +29,26 @@ class MyController : BaseController<MyControlleViewHolder, MyControllerView, MyC
         return MyControllerModelImpl(this);
     }
 
-    override fun createPresenter(view: MyControllerView, model: MyControllerModel): MyControllerPresenter {
-        return MyControllerPresenterImpl(view, model);
+    override fun createPresenter(view: MyControllerView, model: MyControllerModel, dataHolder: LocalDataHolder): MyControllerPresenter {
+        return MyControllerPresenterImpl(view, model, dataHolder);
+    }
+
+    inner class LocalDataHolder: DataHolder {
+
+        private val BUNDLE_VALUE = "BUNDLE_VALUE";
+
+        public var value: Int? = 30;
+
+        constructor(bundle: MutableMap<String, Any>): super(bundle) {
+            this.value = bundle.get(BUNDLE_VALUE) as? Int;
+        }
+
+        override fun save(): MutableMap<String, Any> {
+            bundle.put(BUNDLE_VALUE, value!!);
+
+            return super.save();
+        }
+
     }
 
 }

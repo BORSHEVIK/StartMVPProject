@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
         if (!router!!.hasRootController()) {
-            router!!.setRoot(RouterTransaction.with(MyController()))
+            router!!.setRoot(RouterTransaction.with(MyController(Bundle())))
         }
     }
 
