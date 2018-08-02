@@ -10,8 +10,7 @@ open class DataHolder {
         this.bundle = bundle;
     }
 
-    open fun save(): MutableMap<String, Any> {
-        return bundle;
+    open fun save() {
     }
 
 }

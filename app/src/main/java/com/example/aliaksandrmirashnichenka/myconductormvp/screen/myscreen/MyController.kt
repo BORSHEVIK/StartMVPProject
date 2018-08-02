@@ -45,10 +45,8 @@ class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyCont
             }
         }
 
-        override fun save(): MutableMap<String, Any> {
+        override fun save() {
             bundle.put(BUNDLE_VALUE, value);
-
-            return super.save();
         }
 
     }
