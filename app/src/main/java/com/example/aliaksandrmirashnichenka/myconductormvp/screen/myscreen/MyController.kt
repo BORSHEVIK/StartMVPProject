@@ -37,14 +37,16 @@ class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyCont
 
         private val BUNDLE_VALUE = "BUNDLE_VALUE";
 
-        public var value: Int? = 30;
+        public var value: Int = 30;
 
         constructor(bundle: MutableMap<String, Any>): super(bundle) {
-            this.value = bundle.get(BUNDLE_VALUE) as? Int;
+            if (bundle.containsKey(BUNDLE_VALUE)) {
+                this.value = bundle.get(BUNDLE_VALUE) as Int;
+            }
         }
 
         override fun save(): MutableMap<String, Any> {
-            bundle.put(BUNDLE_VALUE, value!!);
+            bundle.put(BUNDLE_VALUE, value);
 
             return super.save();
         }
