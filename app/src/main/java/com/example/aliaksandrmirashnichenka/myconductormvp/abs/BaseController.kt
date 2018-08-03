@@ -26,7 +26,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         val view: View = inflater.inflate(getViewLayoutId(), container, false);
 
-        var dataBundle: MutableMap<String, Any> = HashMap();
+        var dataBundle: MutableMap<String, Any>;
         val serializeble: Serializable? = args.getSerializable(BUNDLE_DATA_HOLDER);
         if (serializeble == null) {
             dataBundle = HashMap();

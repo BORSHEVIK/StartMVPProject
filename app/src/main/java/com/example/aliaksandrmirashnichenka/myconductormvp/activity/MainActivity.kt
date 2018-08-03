@@ -11,7 +11,7 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.MyCon
 
 class MainActivity : AppCompatActivity() {
 
-    private var router: Router? = null;
+    private lateinit var router: Router;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,13 +20,13 @@ class MainActivity : AppCompatActivity() {
         val container = findViewById(R.id.container) as ViewGroup
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
-        if (!router!!.hasRootController()) {
-            router!!.setRoot(RouterTransaction.with(MyController(Bundle())))
+        if (!router.hasRootController()) {
+            router.setRoot(RouterTransaction.with(MyController(Bundle())))
         }
     }
 
     override fun onBackPressed() {
-        if (!router!!.handleBack()) {
+        if (!router.handleBack()) {
             super.onBackPressed()
         }
     }
