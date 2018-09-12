@@ -1,5 +1,7 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter
 
-class Arguments {
+import java.io.Serializable
+
+class Arguments : Serializable {
 
 }
