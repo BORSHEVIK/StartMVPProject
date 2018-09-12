@@ -5,7 +5,8 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.model.MyControllerModel
 import java.util.*
 
-class MyControllerPresenterImpl(view: MyControllerView, model: MyControllerModel, dataHolder: MyControllerDataHolder) : BasePresenterImpl<MyControllerView, MyControllerModel, MyControllerDataHolder>(view, model, dataHolder), MyControllerPresenter {
+class MyControllerPresenterImpl(view: MyControllerView, model: MyControllerModel, dataHolder: MyControllerDataHolder) :
+        BasePresenterImpl<MyControllerView, MyControllerModel, MyControllerDataHolder>(view, model, dataHolder), MyControllerPresenter {
 
     private val MESSAGE = "Message form presenter and randome int value = ";
 

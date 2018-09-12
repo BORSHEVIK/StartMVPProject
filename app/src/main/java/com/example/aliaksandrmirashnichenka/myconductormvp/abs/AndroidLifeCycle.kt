@@ -1,5 +1,6 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs
 
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
 import java.util.*
 
 interface AndroidLifeCycle {
@@ -8,6 +9,6 @@ interface AndroidLifeCycle {
     fun onCreate();
     fun onResume();
     fun onStop();
-    fun onSaveInstanceState(): MutableMap<String, Any>;
+    fun onSaveInstanceState(): DataHolder;
 
 }

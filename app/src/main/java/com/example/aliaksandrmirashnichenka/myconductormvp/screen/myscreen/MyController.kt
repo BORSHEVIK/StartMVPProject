@@ -24,8 +24,8 @@ class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyCont
         return MyControlleViewHolder(view);
     }
 
-    override fun createDataHolder(bundle: MutableMap<String, Any>): MyControllerDataHolder {
-        return MyControllerDataHolder(bundle);
+    override fun createDataHolder(): MyControllerDataHolder {
+        return MyControllerDataHolder();
     }
 
     override fun createView(viewHolder: MyControlleViewHolder): MyControllerView {

@@ -1,16 +1,7 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter
 
 import android.view.View
+import java.io.Serializable
 
-open class DataHolder {
-
-    internal val bundle: MutableMap<String, Any>;
-
-    constructor(bundle: MutableMap<String, Any>) {
-        this.bundle = bundle;
-    }
-
-    open fun save() {
-    }
-
+open class DataHolder : Serializable {
 }

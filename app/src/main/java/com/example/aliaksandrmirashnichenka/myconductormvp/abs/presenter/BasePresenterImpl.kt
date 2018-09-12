@@ -31,8 +31,7 @@ abstract open class BasePresenterImpl<V: BaseView, M: BaseModel, D: DataHolder> 
 
     }
 
-    override fun onSaveInstanceState(): MutableMap<String, Any> {
-        dataHolder.save();
-        return dataHolder.bundle;
+    override fun onSaveInstanceState(): DataHolder {
+        return dataHolder;
     }
 }

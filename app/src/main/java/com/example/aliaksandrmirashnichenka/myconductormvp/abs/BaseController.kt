@@ -26,14 +26,12 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         val view: View = inflater.inflate(getViewLayoutId(), container, false);
 
-        var dataBundle: MutableMap<String, Any>;
         val serializeble: Serializable? = args.getSerializable(BUNDLE_DATA_HOLDER);
         if (serializeble == null) {
-            dataBundle = HashMap();
+            this.dataHolder = createDataHolder();
         } else {
-            dataBundle = args.getSerializable(BUNDLE_DATA_HOLDER) as MutableMap<String, Any>;
+            this.dataHolder = args.getSerializable(BUNDLE_DATA_HOLDER) as D;
         }
-        this.dataHolder = createDataHolder(dataBundle);
 
         this.viewHolder = createViewHolder(view);
         this.view = createView(this.viewHolder!!);
@@ -70,12 +68,11 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
-        val map: HashMap<String, Any> = HashMap(presenter!!.onSaveInstanceState());
-        args.putSerializable(BUNDLE_DATA_HOLDER, map);
+        args.putSerializable(BUNDLE_DATA_HOLDER, presenter!!.onSaveInstanceState());
         super.onSaveInstanceState(outState);
     }
 
-    open abstract fun createDataHolder(bundle: MutableMap<String, Any>): D;
+    open abstract fun createDataHolder(): D;
     open abstract fun createViewHolder(view: View): H;
     open abstract fun createView(viewHolder: H): V;
     open abstract fun createPresenter(view: V, model: M, dataHolder: D): P;
