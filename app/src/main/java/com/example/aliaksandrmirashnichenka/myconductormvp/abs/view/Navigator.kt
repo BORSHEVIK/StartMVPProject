@@ -1,15 +1,12 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs.view
 
 import android.os.Bundle
-import android.transition.ChangeClipBounds
-import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.SimpleSwapChangeHandler
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.MyController
 

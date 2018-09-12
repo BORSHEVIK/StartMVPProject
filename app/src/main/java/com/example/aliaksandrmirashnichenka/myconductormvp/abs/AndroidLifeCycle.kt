@@ -1,7 +1,6 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
-import java.util.*
 
 interface AndroidLifeCycle {
 

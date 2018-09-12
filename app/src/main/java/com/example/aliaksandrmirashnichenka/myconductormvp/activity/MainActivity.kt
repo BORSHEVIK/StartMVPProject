@@ -1,14 +1,12 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.activity
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
-import com.bluelinelabs.conductor.RouterTransaction
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.Navigator
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.MyController
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,8 +1,8 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.presenter
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenterImpl
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControllerView
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.model.MyControllerModel
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControllerView
 import java.util.*
 
 class MyControllerPresenterImpl(view: MyControllerView, model: MyControllerModel, dataHolder: MyControllerDataHolder) :
