@@ -5,6 +5,7 @@ import android.view.View
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.model.MyControllerModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.model.MyControllerModelImpl
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.presenter.MyControllerDataHolder
@@ -14,7 +15,7 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControllerView
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControllerViewImpl
 
-class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyControllerView, MyControllerModel, MyControllerDataHolder, MyControllerPresenter>(args) {
+class MyController(args: Bundle?) : BaseController<MyControlleViewHolder, MyControllerView, MyControllerModel, MyControllerDataHolder, MyControllerPresenter, Arguments>(args) {
 
     override fun getViewLayoutId(): Int {
         return R.layout.my_controller;

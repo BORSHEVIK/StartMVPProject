@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenter
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.ViewHolder
 import java.io.Serializable
 
-open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: DataHolder, P: BasePresenter>(args: Bundle?) : Controller(args), PresenterProvider<P> {
+open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: DataHolder, P: BasePresenter, A: Arguments>(args: Bundle?) : Controller(args), PresenterProvider<P> {
 
     private val BUNDLE_DATA_HOLDER = "BUNDLE_DATA_HOLDER";
 
@@ -21,6 +22,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     private var presenter: P? = null;
     private var model: M? = null;
     private var dataHolder: D? = null;
+    private lateinit var arguments: A;
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
@@ -32,6 +34,8 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
         } else {
             this.dataHolder = args.getSerializable(BUNDLE_DATA_HOLDER) as D;
         }
+
+        this.arguments = args.getSerializable(Abs.SCREEN_ARGUMENTS) as A;
 
         this.viewHolder = createViewHolder(view);
         this.view = createView(this.viewHolder!!);
