@@ -6,9 +6,13 @@ import android.view.ViewGroup
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Navigator
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import org.koin.android.ext.android.setProperty
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Abs {
 
     private lateinit var router: Router;
     private lateinit var navigator: Navigator;
@@ -20,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         val container = findViewById(R.id.container) as ViewGroup
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
-        navigator = Navigator(router);
+        setProperty(Navigator.PROPERTY_ROUTER, router);
+        navigator = get();
     }
 
     override fun onBackPressed() {
@@ -28,4 +33,9 @@ class MainActivity : AppCompatActivity() {
             super.onBackPressed()
         }
     }
+
+    override fun getNavigator(): Navigator {
+        return navigator; //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

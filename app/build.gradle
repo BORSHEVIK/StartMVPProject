@@ -23,6 +23,8 @@ android {
 }
 
 dependencies {
+    def koin_version = '1.0.0'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
@@ -33,4 +35,5 @@ dependencies {
 
     implementation 'com.bluelinelabs:conductor:2.1.4'
     implementation 'com.bluelinelabs:conductor-archlifecycle:0.1.1'
+    implementation "org.koin:koin-android:$koin_version"
 }

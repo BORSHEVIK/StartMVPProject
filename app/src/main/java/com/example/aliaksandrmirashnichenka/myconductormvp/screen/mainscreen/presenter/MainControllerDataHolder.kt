@@ -4,6 +4,6 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHol
 
 class MainControllerDataHolder: DataHolder() {
 
-    public var value: Int = 30;
+    var value: Int = 30;
 
 }

@@ -5,5 +5,6 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePre
 interface MainControllerPresenter : BasePresenter {
 
     fun updateButtonClick();
+    fun nextButtonClick();
 
 }

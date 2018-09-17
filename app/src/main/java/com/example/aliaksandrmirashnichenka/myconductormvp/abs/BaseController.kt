@@ -11,6 +11,7 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePre
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.ViewHolder
+import com.example.aliaksandrmirashnichenka.myconductormvp.activity.MainActivity
 import java.io.Serializable
 
 open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: DataHolder, P: BasePresenter, A: Arguments>(args: Bundle?) : Controller(args), PresenterProvider<P> {
@@ -23,6 +24,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     private var model: M? = null;
     private var dataHolder: D? = null;
     private lateinit var arguments: A;
+    private lateinit var abs: Abs;
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
@@ -35,12 +37,14 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
             this.dataHolder = args.getSerializable(BUNDLE_DATA_HOLDER) as D;
         }
 
-        this.arguments = args.getSerializable(Abs.SCREEN_ARGUMENTS) as A;
+        this.abs = activity as Abs;
+
+        this.arguments = args.getSerializable(Screens.SCREEN_ARGUMENTS) as A;
 
         this.viewHolder = createViewHolder(view);
         this.view = createView(this.viewHolder!!);
         this.model = createModel();
-        this.presenter = createPresenter(this.view!!, this.model!!, this.dataHolder!!);
+        this.presenter = createPresenter(this.view!!, this.model!!, this.dataHolder!!, this.arguments!!, abs);
 
         this.presenter!!.onCreate();
 
@@ -58,6 +62,8 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     }
 
     override fun onDestroyView(view: View) {
+        args.putSerializable(BUNDLE_DATA_HOLDER, presenter!!.onSaveInstanceState());
+
         presenter!!.onDestroy();
 
         this.viewHolder = null;
@@ -79,7 +85,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     open abstract fun createDataHolder(): D;
     open abstract fun createViewHolder(view: View): H;
     open abstract fun createView(viewHolder: H): V;
-    open abstract fun createPresenter(view: V, model: M, dataHolder: D): P;
+    open abstract fun createPresenter(view: V, model: M, dataHolder: D, arguments: A, abs: Abs): P;
     open abstract fun createModel(): M;
     open abstract fun getViewLayoutId(): Int;
 

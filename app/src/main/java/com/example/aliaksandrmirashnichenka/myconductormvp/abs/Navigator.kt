@@ -6,11 +6,17 @@ import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.SimpleSwapChangeHandler
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Navigator.Companion.PROPERTY_ROUTER
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.MainController
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.testscreen.TestControlle
+import org.koin.dsl.module.module
 
 class Navigator(router: Router) {
+
+    companion object {
+        val PROPERTY_ROUTER = "PROPERTY_ROUTER";
+    }
 
     private val router: Router = router;
 
@@ -31,12 +37,15 @@ class Navigator(router: Router) {
     fun showScreen(screenId: Int, arguments: Arguments, popChangeHandler: ControllerChangeHandler, pushChangeHandler: ControllerChangeHandler) {
 
         var bundle: Bundle = Bundle();
-        bundle.putSerializable(Abs.SCREEN_ARGUMENTS, arguments);
         var controller: Controller = getRootController(bundle);
+        bundle.putSerializable(Screens.SCREEN_ARGUMENTS, arguments);
 
         when (screenId) {
-            Abs.SCREEN_MYSCREEN -> {
+            Screens.SCREEN_MAIN -> {
                 controller = MainController(bundle);
+            }
+            Screens.SCREEN_TEST -> {
+                controller = TestControlle(bundle);
             }
         }
 
@@ -45,8 +54,12 @@ class Navigator(router: Router) {
     }
 
     private fun getRootController(bundle: Bundle): Controller {
-        bundle.putSerializable(Abs.SCREEN_ARGUMENTS, Arguments());
+        bundle.putSerializable(Screens.SCREEN_ARGUMENTS, Arguments());
         return MainController(bundle);
     }
 
+}
+
+val navigatorModule = module {
+    single { Navigator(getProperty(PROPERTY_ROUTER)) }
 }
