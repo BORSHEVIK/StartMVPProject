@@ -30,11 +30,14 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
         val view: View = inflater.inflate(getViewLayoutId(), container, false);
 
-        val serializeble: Serializable? = args.getSerializable(BUNDLE_DATA_HOLDER);
-        if (serializeble == null) {
-            this.dataHolder = createDataHolder();
-        } else {
-            this.dataHolder = args.getSerializable(BUNDLE_DATA_HOLDER) as D;
+        if (this.dataHolder == null) {
+            val serializeble: Serializable? = args.getSerializable(BUNDLE_DATA_HOLDER);
+
+            if (serializeble == null) {
+                this.dataHolder = createDataHolder();
+            } else {
+                this.dataHolder = args.getSerializable(BUNDLE_DATA_HOLDER) as D;
+            }
         }
 
         this.abs = activity as Abs;
@@ -62,8 +65,6 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     }
 
     override fun onDestroyView(view: View) {
-        args.putSerializable(BUNDLE_DATA_HOLDER, presenter!!.onSaveInstanceState());
-
         presenter!!.onDestroy();
 
         this.viewHolder = null;
