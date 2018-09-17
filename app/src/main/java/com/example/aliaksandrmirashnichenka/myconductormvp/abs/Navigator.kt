@@ -1,4 +1,4 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.abs.view
+package com.example.aliaksandrmirashnichenka.myconductormvp.abs
 
 import android.os.Bundle
 import com.bluelinelabs.conductor.Controller
@@ -8,7 +8,7 @@ import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.SimpleSwapChangeHandler
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.MyController
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.MainController
 
 class Navigator(router: Router) {
 
@@ -36,7 +36,7 @@ class Navigator(router: Router) {
 
         when (screenId) {
             Abs.SCREEN_MYSCREEN -> {
-                controller = MyController(bundle);
+                controller = MainController(bundle);
             }
         }
 
@@ -46,7 +46,7 @@ class Navigator(router: Router) {
 
     private fun getRootController(bundle: Bundle): Controller {
         bundle.putSerializable(Abs.SCREEN_ARGUMENTS, Arguments());
-        return MyController(bundle);
+        return MainController(bundle);
     }
 
 }

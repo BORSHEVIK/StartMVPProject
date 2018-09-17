@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.bluelinelabs.conductor.Conductor
 import com.bluelinelabs.conductor.Router
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.Navigator
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Navigator
 
 class MainActivity : AppCompatActivity() {
 

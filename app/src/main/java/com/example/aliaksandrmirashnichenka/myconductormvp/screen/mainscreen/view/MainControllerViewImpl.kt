@@ -1,12 +1,12 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view
+package com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.view
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PresenterProvider
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseViewImpl
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.presenter.MyControllerPresenter
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.presenter.MainControllerPresenter
 
-class MyControllerViewImpl : BaseViewImpl<MyControlleViewHolder, MyControllerPresenter>, MyControllerView {
+class MainControllerViewImpl : BaseViewImpl<MainControlleViewHolder, MainControllerPresenter>, MainControllerView {
 
-    constructor(myControllerViewHolder: MyControlleViewHolder, presenterProvider: PresenterProvider<MyControllerPresenter>)
+    constructor(myControllerViewHolder: MainControlleViewHolder, presenterProvider: PresenterProvider<MainControllerPresenter>)
             : super(myControllerViewHolder, presenterProvider) {
         viewHolder.updateButton.setOnClickListener { presenterProvider.getPresenter().updateButtonClick() };
     }

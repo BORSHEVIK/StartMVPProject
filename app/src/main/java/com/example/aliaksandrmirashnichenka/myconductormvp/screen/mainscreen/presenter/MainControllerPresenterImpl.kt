@@ -1,12 +1,12 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.presenter
+package com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.presenter
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenterImpl
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.model.MyControllerModel
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.myscreen.view.MyControllerView
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.model.MainControllerModel
+import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.view.MainControllerView
 import java.util.*
 
-class MyControllerPresenterImpl(view: MyControllerView, model: MyControllerModel, dataHolder: MyControllerDataHolder) :
-        BasePresenterImpl<MyControllerView, MyControllerModel, MyControllerDataHolder>(view, model, dataHolder), MyControllerPresenter {
+class MainControllerPresenterImpl(view: MainControllerView, model: MainControllerModel, dataHolder: MainControllerDataHolder) :
+        BasePresenterImpl<MainControllerView, MainControllerModel, MainControllerDataHolder>(view, model, dataHolder), MainControllerPresenter {
 
     private val MESSAGE = "Message form presenter and randome int value = ";
 
