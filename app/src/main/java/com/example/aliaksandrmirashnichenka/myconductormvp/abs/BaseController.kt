@@ -70,6 +70,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
         this.viewHolder = null;
         this.view = null;
         this.presenter = null;
+        this.model = null;
 
         super.onDestroyView(view);
     }
