@@ -36,8 +36,4 @@ abstract open class BasePresenterImpl<V: BaseView, M: BaseModel, D: DataHolder, 
     override fun onStop() {
 
     }
-
-    override fun onSaveInstanceState(): DataHolder {
-        return dataHolder;
-    }
 }

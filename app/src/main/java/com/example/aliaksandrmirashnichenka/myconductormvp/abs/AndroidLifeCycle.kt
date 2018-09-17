@@ -8,6 +8,5 @@ interface AndroidLifeCycle {
     fun onCreate();
     fun onResume();
     fun onStop();
-    fun onSaveInstanceState(): DataHolder;
 
 }
