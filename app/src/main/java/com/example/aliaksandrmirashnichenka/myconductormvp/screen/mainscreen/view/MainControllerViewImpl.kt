@@ -8,8 +8,9 @@ class MainControllerViewImpl : BaseViewImpl<MainControllerViewHolder, MainContro
 
     constructor(myControllerViewHolder: MainControllerViewHolder, presenterProvider: PresenterProvider<MainControllerPresenter>)
             : super(myControllerViewHolder, presenterProvider) {
-        viewHolder.updateButton.setOnClickListener { presenterProvider.getPresenter().updateButtonClick() };
-        viewHolder.nextButton.setOnClickListener { presenterProvider.getPresenter().nextButtonClick() };
+        viewHolder.updateButton.setOnClickListener { presenterProvider.getPresenter().updateButtonClick() }
+        viewHolder.nextButton.setOnClickListener { presenterProvider.getPresenter().nextButtonClick() }
+        viewHolder.showDialog.setOnClickListener { presenterProvider.getPresenter().dialogButtonClick() }
     }
 
     override fun updateMeessage(message: String) {
