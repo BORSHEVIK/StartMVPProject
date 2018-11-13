@@ -3,8 +3,6 @@ package com.example.aliaksandrmirashnichenka.myconductormvp.screen.testscreen.vi
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PresenterProvider
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenter
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseViewImpl
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.presenter.MainControllerPresenter
-import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.view.MainControllerViewHolder
 
 class TestControllerViewImpl : BaseViewImpl<TestControllerViewHolder, BasePresenter>, TestControllerView  {
 

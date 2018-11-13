@@ -1,14 +1,14 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.presenter
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Screens
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Screen
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenterImpl
+import com.example.aliaksandrmirashnichenka.myconductormvp.dialog.message.presenter.MessageDialogArguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.model.MainControllerModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.view.MainControllerView
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.testscreen.presenter.TestArguments
 import java.util.*
-import kotlin.math.abs
 
 class MainControllerPresenterImpl(view: MainControllerView, model: MainControllerModel, dataHolder: MainControllerDataHolder, arguments: Arguments, abs: Abs) :
         BasePresenterImpl<MainControllerView, MainControllerModel, MainControllerDataHolder, Arguments>(view, model, dataHolder, arguments, abs), MainControllerPresenter {
@@ -28,7 +28,18 @@ class MainControllerPresenterImpl(view: MainControllerView, model: MainControlle
     override fun nextButtonClick() {
         val testArguments = TestArguments();
         testArguments.value = dataHolder.value;
-        abs.getNavigator().showScreen(Screens.SCREEN_TEST, testArguments);
+        abs.getNavigator().showScreen(Screen.SCREEN_TEST, testArguments);
+    }
+
+    override fun dialogButtonClick() {
+        val dialogArguments = MessageDialogArguments(arguments.controllerTag);
+        dialogArguments.title = "Title";
+        dialogArguments.value = "Hi, this is dialog message from arguments"
+        abs.getNavigator().showDialog(Screen.DIALOG_MESSAGE, dialogArguments);
+    }
+
+    override fun okPressed() {
+        abs.getToastManager().showToast("okPressed()");
     }
 
     private fun ClosedRange<Int>.random() =

@@ -1,7 +1,6 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Navigator
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
 

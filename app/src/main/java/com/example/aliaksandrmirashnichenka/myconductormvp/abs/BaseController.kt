@@ -5,16 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bluelinelabs.conductor.Controller
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogEventListener
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogEventListenerStub
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogEventProvider
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenter
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.ViewHolder
-import com.example.aliaksandrmirashnichenka.myconductormvp.activity.MainActivity
 import java.io.Serializable
 
-open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: DataHolder, P: BasePresenter, A: Arguments>(args: Bundle?) : Controller(args), PresenterProvider<P> {
+open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: DataHolder, P: BasePresenter, A: Arguments>(args: Bundle?) : Controller(args),
+        PresenterProvider<P>, DialogEventProvider {
 
     private val BUNDLE_DATA_HOLDER = "BUNDLE_DATA_HOLDER";
 
@@ -23,8 +26,8 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     private var presenter: P? = null;
     private var model: M? = null;
     private var dataHolder: D? = null;
-    private var arguments: A? = null;
-    private lateinit var abs: Abs;
+    internal var arguments: A? = null;
+    internal lateinit var abs: Abs;
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
@@ -42,7 +45,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
 
         this.abs = activity as Abs;
 
-        this.arguments = args.getSerializable(Screens.SCREEN_ARGUMENTS) as A;
+        this.arguments = args.getSerializable(Screen.SCREEN_ARGUMENTS) as A;
 
         this.viewHolder = createViewHolder(view);
         this.view = createView(this.viewHolder!!);
@@ -76,10 +79,6 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
         super.onDestroyView(view);
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
-
     override fun onSaveInstanceState(outState: Bundle) {
         args.putSerializable(BUNDLE_DATA_HOLDER, dataHolder);
         super.onSaveInstanceState(outState);
@@ -96,4 +95,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
         return this.presenter!!;
     }
 
+    override fun provideEvent(): BaseDialogEventListener {
+        return DialogEventListenerStub();
+    }
 }
