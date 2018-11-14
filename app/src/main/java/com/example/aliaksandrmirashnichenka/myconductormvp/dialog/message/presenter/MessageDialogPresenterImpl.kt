@@ -1,9 +1,6 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.dialog.message.presenter
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PresenterProvider
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogEventListener
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogEventProvider
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.presenter.BaseDialogPresenterImlp
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
@@ -20,12 +17,6 @@ class MessageDialogPresenterImpl(view: MessageDialogView, model: BaseModel, data
 
     override fun okButtonClick() {
         abs.getNavigator().closeCurrentDialog(getControllerTag());
-        /*
-        val eventProvider = abs.getNavigator().getControllerByTag(arguments!!.parrentTag) as DialogEventProvider;
-        if (eventProvider != null) {
-            attachEventListener(eventProvider.provideEvent() as MessageCallback);
-        }
-        */
         eventListener.okPressed();
     }
 }
