@@ -5,7 +5,6 @@ import android.view.View
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogController
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogEventListener
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
 import com.example.aliaksandrmirashnichenka.myconductormvp.dialog.message.presenter.MessageDialogArguments
