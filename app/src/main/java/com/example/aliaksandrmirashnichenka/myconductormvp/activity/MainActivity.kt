@@ -8,8 +8,8 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.Router
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Navigator
-import com.example.aliaksandrmirashnichenka.myconductormvp.abs.ToastManager
+import com.example.aliaksandrmirashnichenka.myconductormvp.service.Navigator
+import com.example.aliaksandrmirashnichenka.myconductormvp.service.ToastManager
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogEventListener
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogEventListenerStub
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogEventProvider
@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), Abs {
 
         router = Conductor.attachRouter(this, container, savedInstanceState)
         dialogRouter = Conductor.attachRouter(this, dialogContainer, savedInstanceState)
-        navigator = Navigator.getInstance(router, dialogRouter);
+        navigator = Navigator(router, dialogRouter);
         toastManager = ToastManager(applicationContext);
     }
 

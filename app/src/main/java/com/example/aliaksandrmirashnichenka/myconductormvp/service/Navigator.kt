@@ -1,4 +1,4 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.abs
+package com.example.aliaksandrmirashnichenka.myconductormvp.service
 
 import android.os.Bundle
 import com.bluelinelabs.conductor.Controller
@@ -6,6 +6,7 @@ import com.bluelinelabs.conductor.ControllerChangeHandler
 import com.bluelinelabs.conductor.Router
 import com.bluelinelabs.conductor.RouterTransaction
 import com.bluelinelabs.conductor.changehandler.FadeChangeHandler
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Screen
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogControllerStub
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.presenter.DialogArguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
@@ -15,22 +16,12 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.screen.testscreen.Tes
 import java.io.Serializable
 import java.util.*
 
-
 class Navigator : Serializable {
-
-    companion object {
-        private var sInstance: Navigator? = null;
-
-        fun getInstance(router: Router, dialogRouter: Router): Navigator {
-            sInstance = Navigator(router, dialogRouter);
-            return sInstance as Navigator;
-        }
-    }
 
     private val router: Router;
     private val dialogRouter: Router;
 
-    private constructor(router: Router, dialogRouter: Router) {
+    constructor(router: Router, dialogRouter: Router) {
         this.router = router;
         this.dialogRouter = dialogRouter;
 

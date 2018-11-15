@@ -1,4 +1,4 @@
-package com.example.aliaksandrmirashnichenka.myconductormvp.abs
+package com.example.aliaksandrmirashnichenka.myconductormvp.service
 
 import android.content.Context
 import android.widget.Toast
