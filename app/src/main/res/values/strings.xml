@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MyConductorMVP</string>
+
+    <!-- Permissions -->
+    <string name="message_title">Attention</string>
+    <string name="camera">If you want to access the camera, then you need to give permission in the settings</string>
 </resources>

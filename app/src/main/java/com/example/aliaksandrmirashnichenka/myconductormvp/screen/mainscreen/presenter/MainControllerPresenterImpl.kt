@@ -1,13 +1,14 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.presenter
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.LocalSchedulers
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Screen
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenterImpl
-import com.example.aliaksandrmirashnichenka.myconductormvp.dialog.message.presenter.MessageDialogArguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.model.MainControllerModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.view.MainControllerView
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.testscreen.presenter.TestArguments
+import com.example.aliaksandrmirashnichenka.myconductormvp.service.PermissionsService
 import java.util.*
 
 class MainControllerPresenterImpl(view: MainControllerView, model: MainControllerModel, dataHolder: MainControllerDataHolder, arguments: Arguments, abs: Abs) :
@@ -32,10 +33,19 @@ class MainControllerPresenterImpl(view: MainControllerView, model: MainControlle
     }
 
     override fun dialogButtonClick() {
+        /*
         val dialogArguments = MessageDialogArguments(arguments.controllerTag);
         dialogArguments.title = "Title";
         dialogArguments.value = "Hi, this is dialog message from arguments"
         abs.getNavigator().showDialog(Screen.DIALOG_MESSAGE, dialogArguments);
+        */
+        abs.getPermissionService().getGrantedPermissionObservable(PermissionsService.Permission.CAMERA)
+                .observeOn(LocalSchedulers.mainThread())
+                .subscribeOn(LocalSchedulers.networking())
+                .subscribe(
+                        { result ->  abs.getToastManager().showToast("Access granted") },
+                        { error -> abs.getToastManager().showToast("Access denied")}
+                )
     }
 
     override fun okPressed() {
