@@ -1,5 +1,6 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -82,6 +83,11 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     override fun onSaveInstanceState(outState: Bundle) {
         args.putSerializable(BUNDLE_DATA_HOLDER, dataHolder);
         super.onSaveInstanceState(outState);
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        getPresenter().onActivityResult(requestCode, resultCode, data);
     }
 
     open abstract fun createDataHolder(): D;

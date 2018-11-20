@@ -1,5 +1,6 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs
 
+import android.content.Context
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogEventListener
 import com.example.aliaksandrmirashnichenka.myconductormvp.service.Navigator
 import com.example.aliaksandrmirashnichenka.myconductormvp.service.PermissionsService
@@ -12,5 +13,6 @@ interface Abs : Serializable {
     fun getToastManager(): ToastManager;
     fun getPermissionService(): PermissionsService;
     fun getControllerEventListnerByTag(controllerTag: String): BaseDialogEventListener;
+    fun getContext(): Context;
 
 }

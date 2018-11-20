@@ -1,5 +1,6 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.activity
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
@@ -99,6 +100,10 @@ class MainActivity : AppCompatActivity(), Abs, PermissionsService.PermissionsCal
     override fun getControllerEventListnerByTag(controllerTag: String): BaseDialogEventListener {
         val controller: Controller = router.getControllerWithTag(controllerTag)!!;
         return if (controller is DialogEventProvider) controller.provideEvent() else DialogEventListenerStub();
+    }
+
+    override fun getContext(): Context {
+        return applicationContext;
     }
 
     private fun showPermisionMessage(message: String) {
