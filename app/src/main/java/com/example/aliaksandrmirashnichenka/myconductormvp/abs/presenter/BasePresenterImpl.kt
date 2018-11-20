@@ -1,6 +1,7 @@
 package com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter
 
 import android.content.Intent
+import com.bluelinelabs.conductor.Controller
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
@@ -39,6 +40,10 @@ abstract open class BasePresenterImpl<V: BaseView, M: BaseModel, D: DataHolder, 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         //Do nothing
+    }
+
+    fun getCurrentController(): Controller {
+        return abs.getNavigator().getControllerByTag(arguments.controllerTag)
     }
 
 }
