@@ -5,6 +5,7 @@ import android.view.View
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PAbs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogEventListener
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.model.MainControllerModel
@@ -34,11 +35,11 @@ class MainController(args: Bundle?) : BaseController<MainControllerViewHolder, M
         return MainControllerViewImpl(viewHolder, this);
     }
 
-    override fun createModel(): MainControllerModel {
-        return MainControllerModelImpl(this);
+    override fun createModel(abs: Abs): MainControllerModel {
+        return MainControllerModelImpl(this, abs);
     }
 
-    override fun createPresenter(view: MainControllerView, model: MainControllerModel, dataHolder: MainControllerDataHolder, arguments: Arguments, abs: Abs): MainControllerPresenter {
+    override fun createPresenter(view: MainControllerView, model: MainControllerModel, dataHolder: MainControllerDataHolder, arguments: Arguments, abs: PAbs): MainControllerPresenter {
         return MainControllerPresenterImpl(view, model, dataHolder, arguments, abs);
     }
 

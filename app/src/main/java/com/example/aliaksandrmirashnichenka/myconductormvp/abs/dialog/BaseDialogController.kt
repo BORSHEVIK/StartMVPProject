@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.presenter.BaseDialogPresenter
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.presenter.DialogArguments
@@ -20,8 +21,8 @@ open abstract class BaseDialogController<H: ViewHolder, V: BaseView, D: DataHold
 
     override var cancellable: Boolean = true;
 
-    override fun createModel(): BaseModel {
-        return BaseModelImpl(this);
+    override fun createModel(abs: Abs): BaseModel {
+        return BaseModelImpl(this, abs);
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {

@@ -5,6 +5,7 @@ import android.view.View
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.BaseController
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PAbs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModelImpl
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenter
@@ -29,12 +30,12 @@ class TestControlle(args: Bundle?) : BaseController<TestControllerViewHolder, Te
         return TestControllerViewImpl(viewHolder, this)
     }
 
-    override fun createPresenter(view: TestControllerView, model: BaseModel, dataHolder: DataHolder, arguments: TestArguments, abs: Abs): BasePresenter {
+    override fun createPresenter(view: TestControllerView, model: BaseModel, dataHolder: DataHolder, arguments: TestArguments, abs: PAbs): BasePresenter {
         return TestControllerPresenterImpl(view, model, dataHolder, arguments, abs)
     }
 
-    override fun createModel(): BaseModel {
-        return BaseModelImpl(this)
+    override fun createModel(abs: Abs): BaseModel {
+        return BaseModelImpl(this, abs)
     }
 
     override fun getViewLayoutId(): Int {

@@ -2,6 +2,7 @@ package com.example.aliaksandrmirashnichenka.myconductormvp.screen.mainscreen.pr
 
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.LocalSchedulers
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PAbs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Screen
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.Arguments
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.BasePresenterImpl
@@ -11,7 +12,7 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.screen.testscreen.pre
 import com.example.aliaksandrmirashnichenka.myconductormvp.service.PermissionsService
 import java.util.*
 
-class MainControllerPresenterImpl(view: MainControllerView, model: MainControllerModel, dataHolder: MainControllerDataHolder, arguments: Arguments, abs: Abs) :
+class MainControllerPresenterImpl(view: MainControllerView, model: MainControllerModel, dataHolder: MainControllerDataHolder, arguments: Arguments, abs: PAbs) :
         BasePresenterImpl<MainControllerView, MainControllerModel, MainControllerDataHolder, Arguments>(view, model, dataHolder, arguments, abs), MainControllerPresenter {
 
     private val MESSAGE = "Message form presenter and randome int value = ";

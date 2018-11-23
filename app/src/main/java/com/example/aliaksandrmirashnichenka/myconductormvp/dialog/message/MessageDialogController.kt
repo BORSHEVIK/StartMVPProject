@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PAbs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogController
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter.DataHolder
@@ -28,7 +29,7 @@ class MessageDialogController(args: Bundle?) : BaseDialogController<MessageDialo
         return MessageDialogViewImpl(viewHolder, this)
     }
 
-    override fun createPresenter(view: MessageDialogView, model: BaseModel, dataHolder: DataHolder, arguments: MessageDialogArguments, abs: Abs): MessageDialogPresenter {
+    override fun createPresenter(view: MessageDialogView, model: BaseModel, dataHolder: DataHolder, arguments: MessageDialogArguments, abs: PAbs): MessageDialogPresenter {
         return MessageDialogPresenterImpl(view, model, dataHolder, arguments, abs)
     }
 

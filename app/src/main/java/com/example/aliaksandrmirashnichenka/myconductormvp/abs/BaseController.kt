@@ -28,7 +28,7 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     private var model: M? = null;
     private var dataHolder: D? = null;
     internal var arguments: A? = null;
-    internal lateinit var abs: Abs;
+    internal lateinit var abs: PAbs;
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup): View {
@@ -44,13 +44,13 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
             }
         }
 
-        this.abs = activity as Abs;
+        this.abs = activity as PAbs;
 
         this.arguments = args.getSerializable(Screen.SCREEN_ARGUMENTS) as A;
 
         this.viewHolder = createViewHolder(view);
         this.view = createView(this.viewHolder!!);
-        this.model = createModel();
+        this.model = createModel(this.abs);
         this.presenter = createPresenter(this.view!!, this.model!!, this.dataHolder!!, this.arguments!!, abs);
 
         this.presenter!!.onCreate();
@@ -93,8 +93,8 @@ open abstract class BaseController<H: ViewHolder, V: BaseView, M: BaseModel, D: 
     open abstract fun createDataHolder(): D;
     open abstract fun createViewHolder(view: View): H;
     open abstract fun createView(viewHolder: H): V;
-    open abstract fun createPresenter(view: V, model: M, dataHolder: D, arguments: A, abs: Abs): P;
-    open abstract fun createModel(): M;
+    open abstract fun createPresenter(view: V, model: M, dataHolder: D, arguments: A, abs: PAbs): P;
+    open abstract fun createModel(abs: Abs): M;
     open abstract fun getViewLayoutId(): Int;
 
     override fun getPresenter(): P {

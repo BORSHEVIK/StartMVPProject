@@ -11,6 +11,7 @@ import com.bluelinelabs.conductor.Controller
 import com.bluelinelabs.conductor.Router
 import com.example.aliaksandrmirashnichenka.myconductormvp.R
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PAbs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.BaseDialogEventListener
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogEventListenerStub
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.dialog.DialogEventProvider
@@ -19,7 +20,7 @@ import com.example.aliaksandrmirashnichenka.myconductormvp.service.PermissionsSe
 import com.example.aliaksandrmirashnichenka.myconductormvp.service.ToastManager
 
 
-class MainActivity : AppCompatActivity(), Abs, PermissionsService.PermissionsCallbacks {
+class MainActivity : AppCompatActivity(), PAbs, PermissionsService.PermissionsCallbacks {
 
     private lateinit var router: Router;
     private lateinit var dialogRouter: Router;

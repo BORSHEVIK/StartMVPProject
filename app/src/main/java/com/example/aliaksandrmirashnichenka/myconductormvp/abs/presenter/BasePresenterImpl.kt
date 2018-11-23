@@ -3,6 +3,7 @@ package com.example.aliaksandrmirashnichenka.myconductormvp.abs.presenter
 import android.content.Intent
 import com.bluelinelabs.conductor.Controller
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.Abs
+import com.example.aliaksandrmirashnichenka.myconductormvp.abs.PAbs
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.model.BaseModel
 import com.example.aliaksandrmirashnichenka.myconductormvp.abs.view.BaseView
 
@@ -12,9 +13,9 @@ abstract open class BasePresenterImpl<V: BaseView, M: BaseModel, D: DataHolder, 
     internal val model: M;
     internal val dataHolder: D;
     internal val arguments: A;
-    internal val abs: Abs;
+    internal val abs: PAbs;
 
-    constructor(view: V, model: M, dataHolder: D, arguments: A, abs: Abs) {
+    constructor(view: V, model: M, dataHolder: D, arguments: A, abs: PAbs) {
         this.view = view;
         this.model = model;
         this.dataHolder = dataHolder;
