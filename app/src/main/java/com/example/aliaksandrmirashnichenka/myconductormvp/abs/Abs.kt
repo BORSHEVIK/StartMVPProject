@@ -10,5 +10,6 @@ import java.io.Serializable
 interface Abs : Serializable {
 
     fun getPermissionService(): PermissionsService;
+    fun getContext(): Context;
 
 }

@@ -10,6 +10,5 @@ interface PAbs : Abs {
     fun getToastManager(): ToastManager;
     fun getNavigator(): Navigator;
     fun getControllerEventListnerByTag(controllerTag: String): BaseDialogEventListener;
-    fun getContext(): Context;
 
 }
