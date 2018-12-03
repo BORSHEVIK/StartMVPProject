@@ -42,7 +42,7 @@ open abstract class BaseDialogController<H: ViewHolder, V: BaseView, D: DataHold
             title.text = titleText;
         }
 
-        getPresenter().attachEventListener(abs.getControllerEventListnerByTag(arguments!!.parrentTag) as L);
+        getPresenter().attachEventListener(abs.getControllerEventListnerByTag(arguments!!.parrentTag!!) as L);
 
         return view;
     }
