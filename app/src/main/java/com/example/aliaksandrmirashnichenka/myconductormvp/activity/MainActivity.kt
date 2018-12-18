@@ -36,11 +36,11 @@ class MainActivity : AppCompatActivity(), PAbs, PermissionsService.PermissionsCa
         val container = findViewById(R.id.container) as ViewGroup
         val dialogContainer = findViewById(R.id.dialogContainer) as ViewGroup;
 
+        toastManager = ToastManager(applicationContext);
+        permissionsService = PermissionsService(applicationContext);
         router = Conductor.attachRouter(this, container, savedInstanceState)
         dialogRouter = Conductor.attachRouter(this, dialogContainer, savedInstanceState)
         navigator = Navigator(router, dialogRouter);
-        toastManager = ToastManager(applicationContext);
-        permissionsService = PermissionsService(applicationContext);
     }
 
     override fun onStart() {
